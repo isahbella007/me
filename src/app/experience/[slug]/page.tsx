@@ -13,7 +13,6 @@ export default async function ExperiencePage({
 }) {
   const { slug } = await params;
   const exp = experiences[slug];
-  console.log(`the exp is => ${exp}`)
   if (!exp) notFound();
   return <ExperienceContent exp={exp} />;
 }

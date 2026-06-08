@@ -1,9 +1,19 @@
+'use client';
+
+import Link from 'next/link';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Chip from '@mui/material/Chip';
 import Divider from '@mui/material/Divider';
+import Button from '@mui/material/Button';
+import ArticleIcon from '@mui/icons-material/AutoStories';
 import { COLORS } from '@/theme';
 import { type Project } from '@/data/content';
+import MermaidDiagram from '@/components/MermaidDiagram';
+
+const articleLinks: Record<string, string> = {
+  'hr-identity-pipeline': '/articles/hr-data-apocalypse',
+};
 
 const statusColors: Record<string, string> = {
   Production:    COLORS.pink,
@@ -106,18 +116,22 @@ export default function ProjectContent({ project }: { project: Project }) {
               <Box key={c} sx={{ width: 10, height: 10, borderRadius: '50%', bgcolor: c }} />
             ))}
           </Box>
-          <pre
-            style={{
-              margin: 0,
-              fontFamily: 'var(--font-mono), "JetBrains Mono", monospace',
-              fontSize: 12,
-              color: COLORS.mauve,
-              lineHeight: 1.65,
-              whiteSpace: 'pre',
-            }}
-          >
-            {project.diagram}
-          </pre>
+          {project.mermaidChart ? (
+            <MermaidDiagram chart={project.mermaidChart} />
+          ) : (
+            <pre
+              style={{
+                margin: 0,
+                fontFamily: 'var(--font-mono), "JetBrains Mono", monospace',
+                fontSize: 12,
+                color: COLORS.mauve,
+                lineHeight: 1.65,
+                whiteSpace: 'pre',
+              }}
+            >
+              {project.diagram}
+            </pre>
+          )}
         </Box>
       </Box>
 
@@ -162,6 +176,29 @@ export default function ProjectContent({ project }: { project: Project }) {
           ))}
         </Box>
       </Box>
+
+      {/* ── Article link ── */}
+      {articleLinks[project.id] && (
+        <Box sx={{ mb: 4 }}>
+          <Link href={articleLinks[project.id]} style={{ textDecoration: 'none', display: 'inline-block' }}>
+            <Button
+              variant="outlined"
+              startIcon={<ArticleIcon sx={{ fontSize: 16 }} />}
+              sx={{
+                fontFamily: 'inherit',
+                fontSize: 13,
+                color: COLORS.pink,
+                borderColor: `${COLORS.pink}60`,
+                px: 2.5,
+                py: 1,
+                '&:hover': { borderColor: COLORS.pink, bgcolor: `${COLORS.pink}08` },
+              }}
+            >
+              Read the Full Case Study →
+            </Button>
+          </Link>
+        </Box>
+      )}
 
       {/* ── Tech ── */}
       <Box>

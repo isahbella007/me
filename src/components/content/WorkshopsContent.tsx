@@ -20,7 +20,7 @@ export default function WorkshopsContent() {
             mb: 0.5,
           }}
         >
-          <span style={{ color: COLORS.pink }}>#</span> Workshops &amp; Training
+          <span style={{ color: COLORS.pink }}># </span> Workshops &amp; Training
         </Typography>
         <Typography sx={{ fontFamily: 'inherit', fontSize: 14, color: COLORS.lavender, mb: 1 }}>
           🎤 Teaching people to actually use the tools

@@ -24,7 +24,8 @@ export type Project = {
   status: 'Production' | 'Shipped' | 'In Progress';
   company: string;
   tagline: string;
-  diagram: string;
+  diagram?: string;
+  mermaidChart?: string;
   problem: string;
   solution: string;
   impact: string[];
@@ -244,38 +245,31 @@ export const projects: Record<string, Project> = {
     subtitle: 'From Excel chaos to a single source of truth',
     emoji: '🔄',
     status: 'Production',
-    company: 'Bajaj Nigeria',
-    tagline: 'Automated staff identity management that replaced 3 manual operators and one shared spreadsheet.',
-    diagram: `
-  ┌──────────────────────────────────────────────────┐
-  │           HR STAFF IDENTITY PIPELINE             │
-  └──────────────────────────────────────────────────┘
-
-       [Excel Upload to Dropzone]
-                  │
-                  ▼
-         [Pipeline Trigger]
-                  │
-                  ▼
-    ┌─────────────────────────────┐
-    │       Validation Layer      │
-    │   ✓ Required columns check  │
-    │   ✓ Dept. data dictionary   │
-    │   ✓ Data cleaning / norms   │
-    └──────────────┬──────────────┘
-                   │
-          ┌────────┴─────────┐
-         PASS              FAIL
-          │                  │
-          ▼                  ▼
-    [Upsert DB]        [Error Report]
-          │
-          ├── Staff in new sheet  ──▶  UPDATE record
-          │
-          └── Staff absent        ──▶  OFFBOARD
-                       │
-                       ├── Remove from Townhall (Intranet)
-                       └── Remove from Birthday Spotlight`,
+    company: 'DAG Nigeria',
+    tagline: 'Automated staff identity management that replaced 2 manual operators and one shared spreadsheet.',
+    mermaidChart: `flowchart TD
+    A[HR Uploads Employee Excel File] --> B{Step 1: Automated File Validation}
+    
+    %% Validation Results
+    B -->|File Error or Missing Columns| C[Instant Teams Alert to Uploader: Fix File]
+    B -->|File Looks Good| D[Step 2: Sync with SharePoint & Active Rosters]
+    
+    %% New Hire & Offboarding Paths
+    D --> E{Identify Changes}
+    
+    E -->|New Hires Found| F{Validate Employee Details}
+    E -->|Employees Left| G[Process Offboarded Staff]
+    
+    %% Detail Validation
+    F -->|Valid ID & Recognized Dept| H[Securely Add New Staff to SharePoint]
+    F -->|Data Missing or Unknown Dept| I[Log Error for Review]
+    
+    %% Final Reporting
+    H --> J[Step 3: Generate Summary Report]
+    I --> J
+    G --> J
+    
+    J --> K[Send Automated HTML Status Report to HR Uploader]`,
     problem:
       'Three people managing staff data in a shared Excel file. No validation, no consistency, no source of truth. Employees who left the company would linger on the intranet townhall and birthday spotlight for months.',
     solution:
@@ -392,7 +386,7 @@ export const workshopSessions: WorkshopSession[] = [
     title: 'Inhouse ATS Portal',
     description:
       'Led HR team training on the Applicant Tracking System — from candidate pipeline navigation to status updates, reporting workflows, and best practices.',
-    audience: 'HR Team, Bajaj Nigeria',
+    audience: 'HR Team, DAG Nigeria',
     format: 'Workshop',
   },
   {

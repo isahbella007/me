@@ -42,6 +42,13 @@ export const fileTree: TreeItem[] = [
   },
   {
     type: 'folder',
+    name: 'articles',
+    children: [
+      { type: 'file', name: 'hr-identity-pipeline.md', href: '/articles/hr-data-apocalypse', extension: 'md' },
+    ],
+  },
+  {
+    type: 'folder',
     name: 'off-duty',
     children: [
       { type: 'file', name: 'workshops-&-training.md', href: '/off-duty/workshops-training', extension: 'md' },

@@ -1,3 +1,5 @@
+'use client';
+
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
@@ -6,18 +8,16 @@ import Divider from '@mui/material/Divider';
 import DownloadIcon from '@mui/icons-material/Download';
 import { COLORS } from '@/theme';
 
-const coreStack = {
-  languages:       ['Python', 'TypeScript', 'SQL'],
-  databases:       ['PostgreSQL', 'MongoDB', 'Prisma ORM'],
-  cloud:           ['GCP', 'Docker',  'GitHub Actions', 'CI/CD Automation'],
-  data_pipelines:  ['Apache Spark', 'Kafka', 'Snowflake', 'ETL/ELT'],
-  data_concepts:   ['Data Modeling', 'Data Warehousing', 'Data Governance', 'Process Automation', 'Real-time Data Streaming'],
-  ai_integrations: ['OpenAI', 'Gemini', 'Claude'],
-  project_management: ['Jira', 'Confluence'],
-  no_code: ['Power Automate', 'Zappier', 'Process Maker'],
-  currently_at:    'DAG Nigeria',
-  open_to:         ['Data Engineer', 'Consulting', 'Freelance'],
-} as const;
+const skillCategories = [
+  { emoji: '🐍', label: 'Languages',            skills: ['Python', 'TypeScript', 'SQL'] },
+  { emoji: '🗄️', label: 'Databases',             skills: ['PostgreSQL', 'MongoDB', 'Prisma ORM'] },
+  { emoji: '☁️', label: 'Cloud & DevOps',         skills: ['GCP', 'Docker', 'GitHub Actions', 'CI/CD Automation'] },
+  { emoji: '🔄', label: 'Data Pipelines',         skills: ['Apache Spark', 'Kafka', 'Snowflake', 'ETL/ELT'] },
+  { emoji: '📊', label: 'Data Concepts',          skills: ['Data Modeling', 'Data Warehousing', 'Data Governance', 'Process Automation', 'Real-time Streaming'] },
+  { emoji: '🤖', label: 'AI & LLMs',              skills: ['OpenAI', 'Gemini', 'Claude', 'RAG'] },
+  { emoji: '⚡', label: 'No-Code & Automation',   skills: ['Power Automate', 'Zapier', 'Process Maker'] },
+  { emoji: '📋', label: 'Project Management',     skills: ['Jira', 'Confluence', 'Agile / Scrum'] },
+];
 
 const metrics = [
   { value: '$27K',  label: 'annual cloud savings',  icon: '💰' },
@@ -37,6 +37,55 @@ export default function ReadmeContent() {
   return (
     <Box sx={{ maxWidth: 860, mx: 'auto', px: { xs: 2, sm: 4 }, py: 4 }}>
 
+      {/* ── Sidebar hint ── */}
+      <Box
+        sx={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: 1.5,
+          mb: 3,
+          px: 2,
+          py: 1.5,
+          borderRadius: 1.5,
+          border: `1px solid ${COLORS.pink}40`,
+          bgcolor: `${COLORS.pink}08`,
+          animation: 'softGlow 3s ease-in-out infinite',
+          '@keyframes softGlow': {
+            '0%, 100%': { boxShadow: `0 0 6px ${COLORS.pink}20, inset 0 0 6px ${COLORS.pink}08` },
+            '50%':       { boxShadow: `0 0 18px ${COLORS.pink}45, inset 0 0 12px ${COLORS.pink}15` },
+          },
+        }}
+      >
+        <Typography sx={{ fontSize: 16, flexShrink: 0 }}>📁</Typography>
+        {/* Mobile message */}
+        <Typography
+          sx={{
+            display: { xs: 'block', sm: 'none' },
+            fontFamily: 'inherit',
+            fontSize: 12,
+            color: COLORS.textSecondary,
+            lineHeight: 1.6,
+          }}
+        >
+          Tap the{' '}
+          <Box component="span" sx={{ color: COLORS.pink, fontWeight: 600 }}>☰ menu icon</Box>
+          {' '}at the top-left to explore — experience, projects &amp; articles are inside.
+        </Typography>
+        {/* Desktop message */}
+        <Typography
+          sx={{
+            display: { xs: 'none', sm: 'block' },
+            fontFamily: 'inherit',
+            fontSize: 12,
+            color: COLORS.textSecondary,
+            lineHeight: 1.6,
+          }}
+        >
+          There&apos;s more in the{' '}
+          <Box component="span" sx={{ color: COLORS.pink, fontWeight: 600 }}>sidebar on the left</Box>
+        </Typography>
+      </Box>
+
       {/* ── Name & title ── */}
       <Box sx={{ mb: 3 }}>
         <Typography
@@ -50,12 +99,12 @@ export default function ReadmeContent() {
             lineHeight: 1.2,
           }}
         >
-          <span style={{ color: COLORS.pink }}>#</span> Isabella Nekabari Kpai
+          <span style={{ color: COLORS.pink }}> Isabella Kpai</span> 
         </Typography>
         <Typography sx={{ fontFamily: 'inherit', fontSize: 15, color: COLORS.mauve, mb: 1 }}>
           {'> '} AI &amp; Data Engineer 
         </Typography>
-        <Typography
+        {/* <Typography
           sx={{
             fontFamily: 'inherit',
             fontSize: 14,
@@ -67,7 +116,7 @@ export default function ReadmeContent() {
           }}
         >
           I turn messy spreadsheets and siloed systems into pipelines that save companies real money.
-        </Typography>
+        </Typography> */}
       </Box>
 
       {/* ── Badges ── */}
@@ -103,9 +152,9 @@ export default function ReadmeContent() {
           <span style={{ color: COLORS.pink, fontWeight: 700 }}>₦1.5M</span> in cost reductions,
           and quietly replaced three manual operators with a single automated pipeline.
           <br /><br /> */}
-          <span style={{ color: COLORS.textMuted }}>
+          {/* <span style={{ color: COLORS.textMuted }}>
             {'// '}Generalist by design. Specialist where it counts.
-          </span>
+          </span> */}
         </Typography>
       </Box>
 
@@ -113,70 +162,68 @@ export default function ReadmeContent() {
 
       {/* ── Core stack as JSON ── */}
       <Box sx={{ mb: 4 }}>
-        <Typography sx={{ fontFamily: 'inherit', fontSize: 13, color: COLORS.pink, mb: 1.5 }}>
-          ## Core Stack
+        <Typography sx={{ fontFamily: 'inherit', fontSize: 13, color: COLORS.pink, mb: 2 }}>
+          What I Can Do
         </Typography>
         <Box
           sx={{
-            bgcolor: COLORS.codeBg,
-            border: `1px solid ${COLORS.border}`,
-            borderRadius: 1,
-            p: 2.5,
-            position: 'relative',
+            display: 'grid',
+            gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' },
+            gap: 1.5,
           }}
         >
-          <Box sx={{ position: 'absolute', top: 10, right: 14, display: 'flex', gap: 0.75 }}>
-            {['#ff5f57', '#febc2e', '#28c840'].map(c => (
-              <Box key={c} sx={{ width: 10, height: 10, borderRadius: '50%', bgcolor: c }} />
-            ))}
-          </Box>
-
-          {/* <Typography
-            component="div"
-            sx={{ fontFamily: 'inherit', fontSize: 13, color: COLORS.textMuted, mb: 0.5, fontStyle: 'italic' }}
-          >
-            {'// stack.json'}
-          </Typography> */}
-          <Typography component="div" sx={{ fontFamily: 'inherit', fontSize: 13, color: COLORS.textPrimary, lineHeight: 1.9 }}>
-            {'{'}
-          </Typography>
-          {(Object.entries(coreStack) as [string, string | readonly string[]][]).map(([key, val]) => (
-            <Typography
-              key={key}
-              component="div"
-              sx={{ fontFamily: 'inherit', fontSize: 13, lineHeight: 1.9, pl: 2 }}
+          {skillCategories.map(cat => (
+            <Box
+              key={cat.label}
+              sx={{
+                bgcolor: COLORS.codeBg,
+                border: `1px solid ${COLORS.border}`,
+                borderRadius: 1.5,
+                p: 2,
+                '&:hover': { borderColor: `${COLORS.pink}60` },
+                transition: 'border-color 0.2s',
+              }}
             >
-              <span style={{ color: COLORS.cyan }}>&quot;{key}&quot;</span>
-              <span style={{ color: COLORS.textSecondary }}>: </span>
-              {Array.isArray(val) ? (
-                <>
-                  {'['}
-                  {(val as string[]).map((v, i) => (
-                    <span key={v}>
-                      <span style={{ color: key === 'open_to' ? COLORS.mauve : COLORS.pink }}>
-                        &quot;{v}&quot;
-                      </span>
-                      {i < val.length - 1 ? ', ' : ''}
-                    </span>
-                  ))}
-                  {']'}
-                </>
-              ) : (
-                <span style={{ color: COLORS.pink }}>&quot;{val}&quot;</span>
-              )}
-              {','}
-            </Typography>
+              <Typography
+                sx={{
+                  fontFamily: 'inherit',
+                  fontSize: 12,
+                  fontWeight: 700,
+                  color: COLORS.mauve,
+                  mb: 1.25,
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 0.75,
+                }}
+              >
+                <span>{cat.emoji}</span> {cat.label}
+              </Typography>
+              <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.75 }}>
+                {cat.skills.map(skill => (
+                  <Chip
+                    key={skill}
+                    label={skill}
+                    size="small"
+                    sx={{
+                      fontFamily: 'inherit',
+                      fontSize: 11,
+                      height: 22,
+                      color: COLORS.textPrimary,
+                      bgcolor: COLORS.selected,
+                      border: `1px solid ${COLORS.border}`,
+                    }}
+                  />
+                ))}
+              </Box>
+            </Box>
           ))}
-          <Typography component="div" sx={{ fontFamily: 'inherit', fontSize: 13, color: COLORS.textPrimary }}>
-            {'}'}
-          </Typography>
         </Box>
       </Box>
 
       {/* ── Metrics ── */}
       <Box sx={{ mb: 4 }}>
         <Typography sx={{ fontFamily: 'inherit', fontSize: 13, color: COLORS.pink, mb: 1.5 }}>
-          ## By the Numbers
+          By the Numbers
         </Typography>
         <Box
           sx={{
@@ -228,7 +275,7 @@ export default function ReadmeContent() {
       {/* ── Previous roles note ── */}
       <Box sx={{ mb: 4 }}>
         <Typography sx={{ fontFamily: 'inherit', fontSize: 13, color: COLORS.pink, mb: 1 }}>
-          ## Also on the Timeline
+          Work Experiences
         </Typography>
         <Typography
           sx={{
@@ -240,13 +287,17 @@ export default function ReadmeContent() {
             lineHeight: 2,
           }}
         >
+          Data Engineer <span style={{ color: COLORS.textMuted }}>@</span>{' '}
+          <span style={{ color: COLORS.mauve, fontWeight: 600 }}>DAG Nigeria</span> (Lagos · 2025–Present)
+          <br />
+          Data Engineer <span style={{ color: COLORS.textMuted }}>@</span>{' '}
+          <span style={{ color: COLORS.mauve, fontWeight: 600 }}>LOTS</span> (Remote · 2024–2025)
+          <br />
           Fullstack Developer <span style={{ color: COLORS.textMuted }}>@</span>{' '}
-          <span style={{ color: COLORS.mauve, fontWeight: 600 }}>Orion Resources</span> (Abuja · 2022–2023) —
-          factory ops management system, 50% faster queries, 80% test coverage.
+          <span style={{ color: COLORS.mauve, fontWeight: 600 }}>Orion Resources</span> (Abuja · 2022–2023)
           <br />
           Software Developer Intern <span style={{ color: COLORS.textMuted }}>@</span>{' '}
-          <span style={{ color: COLORS.mauve, fontWeight: 600 }}>Locumator</span> (Remote · 2022) —
-          built 50% of the consumer Web APIs, led a 5-person Agile team.
+          <span style={{ color: COLORS.mauve, fontWeight: 600 }}>Locumator</span> (Remote · 2022)
         </Typography>
       </Box>
 
