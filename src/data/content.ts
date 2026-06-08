@@ -44,7 +44,7 @@ export type WorkshopSession = {
 export const experiences: Record<string, Experience> = {
   'bajaj-nigeria': {
     id: 'bajaj-nigeria',
-    company: 'Bajaj Nigeria',
+    company: 'DAG Nigeria',
     role: 'Data Engineer',
     period: 'Nov 2025 – Present',
     location: 'Lagos, Nigeria',
@@ -53,45 +53,49 @@ export const experiences: Record<string, Experience> = {
     metrics: [
       { label: 'Power Platform savings', value: '$27K/year' },
       { label: 'Mobile app impact',      value: '₦1.5M saved' },
-      { label: 'Staff data ops',         value: '3 people → 1 pipeline' },
+      { label: 'Enterprise HR Lifecycle & Intranet Sync',         value: '3 people → 1 pipeline' },
     ],
     highlights: [
       {
         title: 'Power Platform Licensing Audit',
-        description:
-          'Identified and implemented optimizations cutting $2,250/month from cloud spend — $27K back in the budget annually.',
-        tags: ['Power Platform', 'Cost Optimization', 'M365'],
+        description: 'Identified and implemented optimizations cutting $2,250/month from cloud spend — saving $27K annually.',
+        tags: ['Cost Optimization', 'Cloud Governance', 'Power Platform'],
       },
       {
-        title: 'Recruitment Governance Engine',
-        description:
-          'Designed and deployed full-cycle automation for HR — fiscal approvals to onboarding digitization. Emails and spreadsheets became a governed, auditable workflow.',
-        tags: ['Process Automation', 'HR Tech', 'Power Automate'],
+        title: 'Custom Enterprise ATS & Governance Engine',
+        description: 'Built a full-cycle Applicant Tracking System with state-driven salary approval workflows, automated offer-letter generation, and secure external candidate portals.',
+        tags: ['AI Engineering', 'Backend Engineering', 'Workflow Automation'],
       },
       {
-        title: 'RAG-Based Internal Knowledge System',
-        description:
-          'Architected an internal knowledge base using Retrieval-Augmented Generation, significantly reducing staff information retrieval time across departments.',
-        tags: ['RAG', 'AI', 'Knowledge Management'],
+        title: 'Identity & Lifecycle Data Pipeline',
+        description: 'Consolidated a siloed process managed by 3 manual operators into a single event-driven pipeline that cleans, validates, and automatically syncs master staff files to the intranet.',
+        tags: ['Data Engineering', 'ETL/ELT', 'Master Data Management'],
       },
       {
-        title: 'DAG Connect App — ETL & Analytics',
-        description:
-          'Built end-to-end ETL pipelines with GitHub Actions orchestration and deployed analytics dashboards. Conducted strategic audits and authored "Map to Revenue" proposals for senior management.',
-        tags: ['ETL', 'GitHub Actions', 'Analytics', 'Strategy'],
+        title: 'Vendor Cost Avoidance App Launch',
+        description: 'Bypassed a ₦1.5M external third-party vendor deployment quote by independently managing containerization and production deployment of a corporate mobile application.',
+        tags: ['DevOps', 'Mobile Deployment', 'Cost Management'],
       },
       {
-        title: 'Enterprise Data Warehouse',
-        description:
-          'Architecting a warehouse to consolidate, clean, and migrate Sales data into Oracle — enabling downstream data product development across the business.',
-        tags: ['Oracle', 'Data Warehouse', 'ETL/ELT'],
+        title: 'RAG-Based Knowledge System',
+        description: 'Architected an internal knowledge base using Retrieval-Augmented Generation (LLMs), significantly reducing information retrieval times across departments.',
+        tags: ['AI Integration', 'LLMs', 'RAG'],
       },
       {
-        title: 'NDPR Compliance',
-        description:
-          'Administered company-wide data privacy questionnaires, interviewed departments, and delivered consolidated reports to the DPO.',
-        tags: ['NDPR', 'Data Privacy', 'Compliance'],
+        title: 'DAG Connect — ETL & Product Strategy',
+        description: 'Built end-to-end pipelines via GitHub Actions and authored "Map to Revenue" product gap proposals for senior executives based on core telemetry data.',
+        tags: ['ETL', 'GitHub Actions', 'Product Strategy'],
       },
+      {
+        title: 'Enterprise Data Warehouse Migration',
+        description: 'Architecting an enterprise data warehouse to consolidate, clean, and migrate disparate Sales data into Oracle to power downstream business analytics.',
+        tags: ['Oracle', 'Data Warehousing', 'Data Modeling'],
+      },
+      {
+        title: 'NDPR Compliance & Data Privacy',
+        description: 'Administered company-wide compliance mapping, audited data handling procedures across departments, and delivered posture reports to the DPO.',
+        tags: ['Data Privacy', 'NDPR', 'Compliance'],
+      }
     ],
     tech: ['Python', 'Oracle', 'Power Platform', 'GitHub Actions', 'RAG', 'ETL/ELT', 'Power Automate'],
   },
@@ -147,18 +151,12 @@ export const experiences: Record<string, Experience> = {
     location: 'Lagos, Nigeria',
     contract: true,
     emoji: '⚙️',
-    tagline: 'Shipping AI-powered backend systems for a hiring and content platform.',
+    tagline: 'Intelligence Pipelines & Subscription-Tier content Engines',
     metrics: [
       { label: 'Requirements delivered', value: '95%+' },
       { label: 'Root causes resolved',   value: '90%' },
     ],
     highlights: [
-      {
-        title: 'AI Resume Parser & Grader',
-        description:
-          "Led development of a data-driven system that ingested, parsed, and graded CVs against job descriptions — significantly streamlining candidate selection pipelines.",
-        tags: ['Python', 'NLP', 'AI', 'HR Tech'],
-      },
       {
         title: 'Recruiter Workflow Automation',
         description:
@@ -166,13 +164,74 @@ export const experiences: Record<string, Experience> = {
         tags: ['Automation', 'Workflow', 'Backend'],
       },
       {
-        title: 'AI Blog Generation System',
-        description:
-          'Engineered a multi-model AI system with a provider abstraction layer over OpenAI, Gemini, and Claude. Included subscription tiers with SEO optimization and bulk generation.',
-        tags: ['OpenAI', 'Gemini', 'Claude', 'TypeScript', 'SaaS'],
+        title: 'Multi-Model AI Blog Platform',
+        description: 'Architected a subscription-based content engine using Factory and Strategy design patterns to dynamically abstract and orchestrate API calls across OpenAI, Claude, and Gemini.',
+        tags: ['Design Patterns', 'API Abstraction', 'LLM Orchestration', 'Backend Dev', 'Saas'],
+      },
+      {
+        title: 'Cross-Functional Schema Alignment',
+        description: 'Collaborated with UX teams to translate complex visual components into optimized JSON API responses, ensuring data structures perfectly matched frontend performance requirements.',
+        tags: ['API Design', 'Data Modeling', 'Cross-Team Collaboration'],
       },
     ],
     tech: ['TypeScript', 'Python', 'OpenAI API', 'Gemini', 'Claude API', 'PostgreSQL'],
+  },
+
+  'orion-resources': {
+    id: 'orion-resources',
+    company: 'Orion Resources',
+    role: 'FullStack Developer',
+    period: 'Oct 2022 – Nov 2023',
+    location: 'Abuja, Nigeria',
+    emoji: '⚙️',
+    tagline: 'Event-Driven Task Scheduling & Automated Operational Dashboards',
+    metrics: [
+      { label: 'Reduction in task assignment latency.', value: '70%' },
+      { label: 'Reduction in maintenance overhead',   value: '30%' },
+      { label: 'Improvement in query response times', value: '50%' },
+    ],
+    highlights: [
+      {
+        title: 'Industrial Operations Mobile Platform',
+        description: 'Designed and built a mobile factory management application that streamlined factory cleaning operations, resulting in a 30% reduction in maintenance overhead and a 70% drop in task assignment latency.',
+        tags: ['Mobile Development', 'State Management', 'Redux Toolkit', 'Process Automation'],
+      },
+      {
+        title: 'Real-Time Dispatch & Scheduling',
+        description: 'Engineered a dynamic scheduling system that cut task assignment latency by 70%, automatically matching available site cleaners with active factory floor room demands.',
+        tags: ['Algorithm Design', 'Resource Allocation', 'Process Automation'],
+      },
+      {
+        title: 'High-Throughput Database Optimization',
+        description: 'Optimized complex MongoDB schemas and query structures to slash database response times by 50%, significantly boosting real-time data retrieval rates for active factory floor users.',
+        tags: ['MongoDB', 'Database Tuning', 'Data Modeling', 'Performance'],
+      },
+      {
+        title: 'Enterprise QA & Observability Pipeline',
+        description: 'Devised quality assurance frameworks for over 10 internal processes, achieving 80% code coverage with Jest while implementing real-time system monitoring and alerting via Winston and Datadog.',
+        tags: ['DevOps', 'Datadog', 'Jest Testing', 'Observability'],
+      }
+    ],
+    tech: ['TypeScript', 'Mongo DB', 'Winston', 'Datadog', 'Jest', 'AWS'],
+  },
+
+  'locumator': {
+    id: 'locumator',
+    company: 'Locumator',
+    role: 'Backend Developer',
+    period: 'Jan 2022 – July 2022',
+    location: 'Remote',
+    emoji: '⚙️',
+    tagline: 'Foundation in Agile & Consumer API Delivery.',
+    metrics: [],
+    highlights: [
+      {
+        title: 'Consumer API Development & Technical Specs',
+        description: 'Built and documented 50% of the core consumer Web APIs while translating client business requirements into functional technical specifications within an Agile framework.',
+        tags: ['API Design', 'Technical Documentation', 'Agile/Scrum', 'Confluence'],
+      }
+    ],
+    tech: ['JavaScript', 'Jira', 'Technical Documentation' ],
   },
 };
 
@@ -344,13 +403,6 @@ export const workshopSessions: WorkshopSession[] = [
     format: 'Workshop',
   },
   {
-    title: 'UI/UX Design Principles',
-    description:
-      'Informal mentorship on design fundamentals — visual hierarchy, spacing, user flows, and building internal tools people actually want to use.',
-    audience: 'Colleagues & Interns',
-    format: 'Mentorship',
-  },
-  {
     title: 'Excel & M365 Best Practices',
     description:
       'Guided teams on document sharing, cloud sync, and collaboration workflows — the pragmatic bridge between spreadsheet culture and structured data systems.',
@@ -360,16 +412,16 @@ export const workshopSessions: WorkshopSession[] = [
 ];
 
 export const interests = {
-  currently_open_to:  ['Senior Data Engineering roles', 'Consulting', 'Freelance contracts'],
+  currently_open_to:  ['Data Engineering opportunities', 'Consulting', 'Freelance'],
   location:           'Lagos, Nigeria',
   timezone:           'WAT (UTC+1)',
-  hobbies:            ['Exploring Lagos food spots', 'Weightlifting', 'Sci-Fi novels'],
+  hobbies:            ['Watching Formula 1', 'Exploring food spots', 'Weight lifting', 'Crohecting'],
   coffee_dependency:  true,
   fun_facts: [
-    'I believe generalists will inherit the tech industry',
+    'Can play the violin',
     "I've saved companies money in both dollars and naira",
     "Started coding during my B.Sc and haven't stopped since",
   ],
   superpower:         'Turning business problems into data solutions before the meeting ends',
-  currently_learning: 'Advanced data mesh architecture & dbt',
+  currently_learning: 'Advanced data mesh architecture & dbt & Flute',
 };

@@ -24,9 +24,11 @@ export const fileTree: TreeItem[] = [
     type: 'folder',
     name: 'experience',
     children: [
-      { type: 'file', name: 'bajaj-nigeria.md',    href: '/experience/bajaj-nigeria',    extension: 'md' },
+      { type: 'file', name: 'dag-nigeria.md',    href: '/experience/bajaj-nigeria',    extension: 'md' },
       { type: 'file', name: 'lots.md',              href: '/experience/lots',              extension: 'md' },
       { type: 'file', name: 'code-derivatives.md',  href: '/experience/code-derivatives',  extension: 'md' },
+      { type: 'file', name: 'orion-resources.md',  href: '/experience/orion-resources',  extension: 'md' },
+      { type: 'file', name: 'locumator.md',  href: '/experience/locumator',  extension: 'md' },
     ],
   },
   {

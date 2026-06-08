@@ -65,6 +65,7 @@ export default function ExperienceContent({ exp }: { exp: Experience }) {
       </Box>
 
       {/* ── Metrics ── */}
+      {exp.metrics.length > 0 && (
       <Box sx={{ mb: 4 }}>
         <Typography sx={{ fontFamily: 'inherit', fontSize: 13, color: COLORS.pink, mb: 1.5 }}>
           ## Impact Metrics
@@ -108,6 +109,7 @@ export default function ExperienceContent({ exp }: { exp: Experience }) {
           ))}
         </Box>
       </Box>
+      )}
 
       <Divider sx={{ borderColor: COLORS.border, mb: 4 }} />
 

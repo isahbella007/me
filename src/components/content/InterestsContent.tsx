@@ -109,7 +109,7 @@ export default function InterestsContent() {
           mt: 2,
         }}
       >
-        {'// Yes, generalists will inherit the tech industry. Fight me. 🤝'}
+        {/* {'// Yes, generalists will inherit the tech industry. Fight me. 🤝'} */}
       </Typography>
     </Box>
   );

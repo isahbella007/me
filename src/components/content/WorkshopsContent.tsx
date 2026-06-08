@@ -49,7 +49,7 @@ export default function WorkshopsContent() {
           <Box
             key={i}
             sx={{
-              bgcolor: '#070810',
+              bgcolor: COLORS.codeBg,
               border: `1px solid ${COLORS.border}`,
               borderRadius: 1,
               p: 2.5,
