@@ -283,6 +283,40 @@ export const projects: Record<string, Project> = {
     tech: ['Python', 'ETL', 'Power Automate', 'SharePoint', 'Data Validation'],
   },
 
+  'custom-ats': {
+    id: 'custom-ats',
+    title: 'Custom Enterprise ATS & Onboarding Engine',
+    subtitle: 'End-to-end recruitment automation — from CV to signed offer',
+    emoji: '🎯',
+    status: 'Production',
+    company: 'DAG Nigeria',
+    tagline: 'Built a compliance-locked, edge-assisted ATS that replaced enterprise licensing with a system designed exactly around our operational constraints.',
+    mermaidChart: `flowchart TD
+    A[Frontend: CV File Upload] --> B[Backend: Stream file payload]
+    B --> C[Cloudflare Worker: Receive stream]
+    C --> D[Worker: Run parsing & regex logic]
+    D --> E{Is structure valid JSON?}
+    E -->|No / Parse Fail| F[Return fallback standard text string]
+    E -->|Yes / Pass| G[Return structured JSON object]
+    F --> H[Backend: Forward response to Frontend]
+    G --> H
+    H --> I[Frontend: Hydrate verification form]
+    I --> J[User: Correct errors & click Submit]
+    J --> K[Backend: Commit validated candidate to DB]`,
+    problem:
+      'Enterprise ATS platforms like Greenhouse or Ashby were cost-prohibitive. We needed an internal system tailored tightly to our cross-department approval workflows, CV parsing, and secure candidate onboarding — without paying enterprise premiums for features we would never use.',
+    solution:
+      'A three-pillar custom platform: edge-assisted resume parsing via Cloudflare Workers to offload token processing, a deterministic multi-department salary approval state machine to enforce compliance before any offer letter generates, and an isolated token-based candidate portal for secure document submission.',
+    impact: [
+      'Eliminated enterprise ATS licensing costs entirely',
+      'Automated end-to-end pipeline from CV ingestion to signed offer letter',
+      'Edge offloading protects core compute from memory spikes during bulk uploads',
+      'State machine locks salary parameters at DB level — unauthorized offers are impossible',
+      'Token-based candidate portal revoked automatically after onboarding completes',
+    ],
+    tech: ['TypeScript', 'Cloudflare Workers', 'PostgreSQL', 'Edge Computing', 'State Machine', 'UUID Tokens', 'File Storage'],
+  },
+
   'resume-parser-ai': {
     id: 'resume-parser-ai',
     title: 'AI Resume Parser & Grader',
