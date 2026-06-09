@@ -4,7 +4,7 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Chip from '@mui/material/Chip';
 import Divider from '@mui/material/Divider';
-import DownloadIcon from '@mui/icons-material/Download';
+import ArticleIcon from '@mui/icons-material/Article';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { COLORS } from '@/theme';
 
@@ -110,19 +110,19 @@ export default function LandingPage() {
               View Projects
             </Button>
           </Link>
-          <Button
-            variant="outlined"
-            startIcon={<DownloadIcon />}
-            href="/resume.pdf"
-            target="_blank"
-            sx={{
-              color: COLORS.pink, borderColor: `${COLORS.pink}60`, fontFamily: 'inherit', fontWeight: 600, fontSize: 13, px: 3, py: 1,
-              '&:hover': { borderColor: COLORS.pink, bgcolor: `${COLORS.pink}08` },
-              transition: 'all 0.2s',
-            }}
-          >
-            Download CV
-          </Button>
+          <Link href="/cv" style={{ textDecoration: 'none' }}>
+            <Button
+              variant="outlined"
+              startIcon={<ArticleIcon />}
+              sx={{
+                color: COLORS.pink, borderColor: `${COLORS.pink}60`, fontFamily: 'inherit', fontWeight: 600, fontSize: 13, px: 3, py: 1,
+                '&:hover': { borderColor: COLORS.pink, bgcolor: `${COLORS.pink}08` },
+                transition: 'all 0.2s',
+              }}
+            >
+              View CV
+            </Button>
+          </Link>
         </Box>
 
         {/* Metrics */}

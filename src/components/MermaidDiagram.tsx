@@ -6,6 +6,12 @@ import { COLORS } from '@/theme';
 
 let counter = 0;
 
+function resolveCssVar(value: string): string {
+  const match = value.match(/^var\((--[^)]+)\)$/);
+  if (!match) return value;
+  return getComputedStyle(document.documentElement).getPropertyValue(match[1]).trim() || value;
+}
+
 export default function MermaidDiagram({ chart }: { chart: string }) {
   const id       = useRef(`mermaid-${++counter}`);
   const [svg, setSvg]     = useState<string | null>(null);
@@ -19,16 +25,16 @@ export default function MermaidDiagram({ chart }: { chart: string }) {
         startOnLoad: false,
         theme: 'base',
         themeVariables: {
-          primaryColor:        COLORS.selected,
-          primaryTextColor:    COLORS.textPrimary,
+          primaryColor:        resolveCssVar(COLORS.selected),
+          primaryTextColor:    resolveCssVar(COLORS.textPrimary),
           primaryBorderColor:  COLORS.pink,
           lineColor:           COLORS.mauve,
-          background:          COLORS.codeBg,
-          mainBkg:             COLORS.codeBg,
-          nodeBorder:          COLORS.border,
-          clusterBkg:          COLORS.hover,
-          titleColor:          COLORS.textPrimary,
-          edgeLabelBackground: COLORS.codeBg,
+          background:          resolveCssVar(COLORS.codeBg),
+          mainBkg:             resolveCssVar(COLORS.codeBg),
+          nodeBorder:          resolveCssVar(COLORS.border),
+          clusterBkg:          resolveCssVar(COLORS.hover),
+          titleColor:          resolveCssVar(COLORS.textPrimary),
+          edgeLabelBackground: resolveCssVar(COLORS.codeBg),
           fontFamily:          'JetBrains Mono, Fira Code, monospace',
           fontSize:            '12px',
         },

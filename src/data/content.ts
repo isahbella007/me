@@ -16,6 +16,8 @@ export type Experience = {
   tech: string[];
 };
 
+export type KeyDecision = { title: string; body: string };
+
 export type Project = {
   id: string;
   title: string;
@@ -28,6 +30,7 @@ export type Project = {
   mermaidChart?: string;
   problem: string;
   solution: string;
+  keyDecisions?: KeyDecision[];
   impact: string[];
   tech: string[];
   wip?: boolean;
@@ -317,88 +320,60 @@ export const projects: Record<string, Project> = {
     tech: ['TypeScript', 'Cloudflare Workers', 'PostgreSQL', 'Edge Computing', 'State Machine', 'UUID Tokens', 'File Storage'],
   },
 
-  'resume-parser-ai': {
-    id: 'resume-parser-ai',
-    title: 'AI Resume Parser & Grader',
-    subtitle: 'Structured intelligence from unstructured CVs',
-    emoji: '🤖',
+  'geo-plate-flow': {
+    id: 'geo-plate-flow',
+    title: 'GeoPlateFlow',
+    subtitle: 'Real-Time Food Delivery Simulator',
+    emoji: '🍕',
     status: 'Shipped',
-    company: 'Code Derivatives',
-    tagline: 'A data pipeline that turns PDFs into hiring decisions.',
-    diagram: `
-  [CV Upload  ·  PDF / DOCX]
-             │
-             ▼
-    [Document Parser]
-             │
-             ▼
-  ┌──────────────────────────┐
-  │     NLP Extraction       │
-  │   · Skills               │
-  │   · Experience & Dates   │
-  │   · Education            │
-  │   · Keywords & Signals   │
-  └────────────┬─────────────┘
-               │
-               ▼
-  [Job Description Vectorizer]
-               │
-               ▼
-  ┌──────────────────────────┐
-  │      Scoring Engine      │
-  │   · Match Score  0–100   │
-  │   · Gap Analysis         │
-  │   · Recommendation Flag  │
-  └────────────┬─────────────┘
-               │
-               ▼
-  [Recruiter Dashboard + Auto-Contact]`,
+    company: 'Personal',
+    tagline: 'A simulator that stress-tests food delivery pipelines under chaotic peak-hour conditions.',
+    mermaidChart: `flowchart TD
+    A[Inbound Order Stream] --> B[PostGIS Service Boundary Validation]
+    B -->|Location Outside Polygon Zone| C[Drop Event / Prevent Pollution]
+    B -->|Validated Location Coordinates| D[Kafka Batch Event Broker]
+    D --> E{Are Drivers Available?}
+    E -->|Yes / Space in Driver Pool| F[Driver Assignment Engine]
+    E -->|No / All Drivers Active| G[Priority Queue Ranker]
+    F -->|Holds stream until 5 urban orders batched| H[Fleet Departure Sync]
+    G -->|Sort by VIP Customer Status & High Order Value| I[Dynamic Waiting Queue Bucket]
+    I -->|Driver returns to base / Frees capacity| F
+    `,
     problem:
-      "Manual CV review doesn't scale. Recruiters spent hours ranking candidates by hand with no consistency or repeatability.",
+      'Testing how a delivery pipeline handles thousands of concurrent orders, moving drivers, and impatient customers in the real world is expensive. There\'s no safe way to stress-test routing logic, geo-validation, and priority queuing without either burning money or breaking production.',
     solution:
-      'A backend system that parses CVs, extracts structured data, compares against job descriptions using NLP, and grades each candidate — returning a ranked shortlist with automated follow-up contact baked in.',
-    impact: [
-      'Dramatically reduced candidate screening time',
-      'Consistent, criteria-based grading across all applicants',
-      'Automated recruiter contact and meeting scheduling on top',
-      '95%+ of software requirements delivered on agreed timelines',
+      'An event-driven simulator built to mimic the operational chaos of a real food delivery platform. Orders are continuously generated, streamed, spatially validated, batched, and dispatched — with a priority queue that replaces naive FIFO logic with a Customer Lifetime Value ranking system.',
+    keyDecisions: [
+      {
+        title: '🛰️ Real-Time Maps & PostGIS Boundary Checks',
+        body: 'Orders stream in live through Apache Kafka. The second an order hits the pipeline, PostGIS checks its GPS coordinates against the restaurant’s delivery zone. If someone tries to order from outside the zone, the system instantly drops it so it doesn’t mess up the rest of the pipeline.',
+      },
+      {
+        title: '🧠 Dynamic Priority Queueing & Dispatch Backpressure',
+        body: 'Instead of a basic "first-come, first-served" line, I built a smart waiting queue. The millisecond a driver gets back to the restaurant, the system looks at the queue and prioritizes Customer Lifetime Value (VIP Tiers).',
+      },
+      {
+        title: '🌪️ Airflow Orchestration & Docker Setup',
+        body: 'Apache Airflow handles the background math—running batches to track driver trip times, calculate delivery speeds, and find busy delivery hotspots. To make it easy to run anywhere, I wrapped the whole cluster (Airflow, Kafka, and PostGIS) into Docker containers so it spins up with one command.',
+      },
     ],
-    tech: ['Python', 'NLP', 'TypeScript', 'PostgreSQL', 'AI APIs'],
+    impact: [
+      'Kafka decoupling proved: thousands of order events held in place without crashing downstream consumers',
+      'Driver batching kept delivery efficiency high but exposed a fairness trade-off — low-spend customers in quiet zones wait significantly longer',
+      'VIP queue ranking surfaced the real tension between business optimization and equitable service delivery',
+      'Full cluster (Airflow + Kafka + Postgres + PostGIS) spins up and down in Docker with zero manual setup',
+    ],
+    tech: ['Python', 'Apache Kafka', 'PostgreSQL', 'PostGIS', 'Apache Airflow', 'Docker'],
   },
-
-  'marketing-to-sales-etl': {
+   'marketing-to-sales-etl': {
     id: 'marketing-to-sales-etl',
     title: 'Marketing → Sales ETL Pipeline',
     subtitle: 'Connecting the top of the funnel to the bottom line',
     emoji: '📊',
     status: 'In Progress',
-    company: 'Bajaj Nigeria',
+    company: 'DAG Nigeria',
     tagline: 'A pipeline that turns marketing activity data into sales intelligence.',
-    diagram: `
-  [Marketing Sources]              [Sales CRM / Oracle]
-  ┌──────────────────┐            ┌────────────────────┐
-  │  Campaigns       │            │  Leads             │
-  │  Events          │            │  Deals             │
-  │  Web Traffic     │            │  Closed Revenue    │
-  └────────┬─────────┘            └──────────┬─────────┘
-           │                                 │
-           └────────────────┬────────────────┘
-                            │
-                            ▼
-                   [ETL Pipeline]
-                ┌─────────────────────┐
-                │  Extract            │
-                │  Transform & Clean  │
-                │  Load → Oracle DW   │
-                └──────────┬──────────┘
-                           │
-                           ▼
-                  [Analytics Layer]
-                ┌─────────────────────┐
-                │  Attribution        │
-                │  Conversion Rates   │
-                │  ROI Dashboards     │
-                └─────────────────────┘`,
+    diagram: `TBD`,
     problem:
       'Marketing and Sales operate in silos. No visibility into which campaigns actually convert to revenue. Budget decisions are made on gut feel, not data.',
     solution:
@@ -433,7 +408,7 @@ export const workshopSessions: WorkshopSession[] = [
   {
     title: 'Excel & M365 Best Practices',
     description:
-      'Guided teams on document sharing, cloud sync, and collaboration workflows — the pragmatic bridge between spreadsheet culture and structured data systems.',
+      'Guided teams on document sharing, cloud sync, and collaboration workflows — the bridge between spreadsheet culture and structured data systems.',
     audience: 'Operations teams',
     format: 'Workshop',
   },

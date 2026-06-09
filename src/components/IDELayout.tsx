@@ -19,7 +19,7 @@ export default function IDELayout({ children }: { children: React.ReactNode }) {
       <Box sx={{ flex: 1 }}>
         {children}
       </Box>
-      <StatusBar />
+      {/* <StatusBar /> */}
     </Box>
   );
 }

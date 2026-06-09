@@ -30,7 +30,7 @@ export default function ProjectContent({ project }: { project: Project }) {
       {/* ── Header ── */}
       <Box sx={{ mb: 3 }}>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, flexWrap: 'wrap', mb: 0.5 }}>
-          <Typography sx={{ fontSize: 36, lineHeight: 1 }}>{project.emoji}</Typography>
+          {/* <Typography sx={{ fontSize: 36, lineHeight: 1 }}>{project.emoji}</Typography> */}
           <Typography
             sx={{
               fontFamily: 'inherit',
@@ -39,7 +39,7 @@ export default function ProjectContent({ project }: { project: Project }) {
               color: COLORS.textPrimary,
             }}
           >
-            <span style={{ color: COLORS.pink }}>#</span> {project.title}
+            {project.title}
           </Typography>
           <Chip
             label={project.status}
@@ -57,9 +57,9 @@ export default function ProjectContent({ project }: { project: Project }) {
         <Typography sx={{ fontFamily: 'inherit', fontSize: 14, color: COLORS.mauve, mb: 0.25 }}>
           {project.subtitle}
         </Typography>
-        <Typography sx={{ fontFamily: 'inherit', fontSize: 12, color: COLORS.textSecondary, mb: 1.5 }}>
+        {/* <Typography sx={{ fontFamily: 'inherit', fontSize: 12, color: COLORS.textSecondary, mb: 1.5 }}>
           @ {project.company}
-        </Typography>
+        </Typography> */}
         <Typography
           sx={{
             fontFamily: 'inherit',
@@ -80,7 +80,7 @@ export default function ProjectContent({ project }: { project: Project }) {
       {/* ── Problem ── */}
       <Box sx={{ mb: 3 }}>
         <Typography sx={{ fontFamily: 'inherit', fontSize: 13, color: COLORS.pink, mb: 1 }}>
-          ## The Problem
+          The Problem
         </Typography>
         <Typography
           sx={{
@@ -99,7 +99,7 @@ export default function ProjectContent({ project }: { project: Project }) {
       {/* ── Architecture diagram ── */}
       <Box sx={{ mb: 3 }}>
         <Typography sx={{ fontFamily: 'inherit', fontSize: 13, color: COLORS.pink, mb: 1 }}>
-          ## Architecture
+          Architecture
         </Typography>
         <Box
           sx={{
@@ -138,7 +138,7 @@ export default function ProjectContent({ project }: { project: Project }) {
       {/* ── Solution ── */}
       <Box sx={{ mb: 3 }}>
         <Typography sx={{ fontFamily: 'inherit', fontSize: 13, color: COLORS.pink, mb: 1 }}>
-          ## The Solution
+          The Solution
         </Typography>
         <Typography
           sx={{ fontFamily: 'inherit', fontSize: 14, color: COLORS.textPrimary, lineHeight: 1.8 }}
@@ -147,10 +147,40 @@ export default function ProjectContent({ project }: { project: Project }) {
         </Typography>
       </Box>
 
+      {/* ── Key Decisions ── */}
+      {project.keyDecisions && project.keyDecisions.length > 0 && (
+        <Box sx={{ mb: 3 }}>
+          <Typography sx={{ fontFamily: 'inherit', fontSize: 13, color: COLORS.pink, mb: 1.5 }}>
+            Key Infrastructure Decisions
+          </Typography>
+          <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.5 }}>
+            {project.keyDecisions.map((d, i) => (
+              <Box
+                key={i}
+                sx={{
+                  bgcolor: COLORS.codeBg,
+                  border: `1px solid ${COLORS.border}`,
+                  borderLeft: `4px solid ${COLORS.mauve}`,
+                  borderRadius: 1,
+                  p: 2,
+                }}
+              >
+                <Typography sx={{ fontFamily: 'inherit', fontSize: 13, fontWeight: 700, color: COLORS.textPrimary, mb: 0.75 }}>
+                  {d.title}
+                </Typography>
+                <Typography sx={{ fontFamily: 'inherit', fontSize: 13, color: COLORS.textSecondary, lineHeight: 1.85 }}>
+                  {d.body}
+                </Typography>
+              </Box>
+            ))}
+          </Box>
+        </Box>
+      )}
+
       {/* ── Impact ── */}
       <Box sx={{ mb: 4 }}>
         <Typography sx={{ fontFamily: 'inherit', fontSize: 13, color: COLORS.pink, mb: 1.5 }}>
-          ## Impact
+          Impact
         </Typography>
         <Box sx={{ display: 'flex', flexDirection: 'column', gap: 0.75 }}>
           {project.impact.map((item, i) => (
@@ -203,7 +233,7 @@ export default function ProjectContent({ project }: { project: Project }) {
       {/* ── Tech ── */}
       <Box>
         <Typography sx={{ fontFamily: 'inherit', fontSize: 13, color: COLORS.pink, mb: 1.5 }}>
-          ## Tech Used
+          Tech Used
         </Typography>
         <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
           {project.tech.map(t => (

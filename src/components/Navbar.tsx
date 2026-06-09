@@ -17,6 +17,7 @@ import { useColorMode } from './ColorModeContext';
 const NAV_LINKS = [
   { label: 'Experience', href: '/experience' },
   { label: 'Projects',   href: '/projects' },
+  { label: 'Workshops',  href: '/workshops' },
   { label: 'Off Duty',   href: '/off-duty' },
   { label: 'Contact',    href: 'mailto:dagpersonal8@gmail.com', external: true },
 ];
@@ -25,6 +26,7 @@ function isActive(href: string, pathname: string) {
   if (href.startsWith('mailto:')) return false;
   if (href === '/experience') return pathname.startsWith('/experience');
   if (href === '/projects')   return pathname.startsWith('/projects') || pathname.startsWith('/systems-architecture');
+  if (href === '/workshops')  return pathname.startsWith('/workshops');
   if (href.startsWith('/off-duty')) return pathname.startsWith('/off-duty');
   return pathname === href;
 }
