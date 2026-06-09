@@ -21,10 +21,10 @@ export default function ProjectsPage() {
       {/* ── Header ── */}
       <Box sx={{ mb: 4 }}>
         <Typography sx={{ fontFamily: 'inherit', fontWeight: 700, fontSize: { xs: 22, sm: 30 }, color: COLORS.textPrimary, mb: 0.5 }}>
-          <span style={{ color: COLORS.pink }}>#</span> Projects & Systems
+          Projects & Systems
         </Typography>
         <Typography sx={{ fontFamily: 'inherit', fontSize: 13, color: COLORS.textMuted, fontStyle: 'italic' }}>
-          {'// systems I designed, built, and shipped in production'}
+          Systems I designed, built, and shipped in production
         </Typography>
       </Box>
 

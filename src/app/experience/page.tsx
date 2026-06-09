@@ -15,11 +15,9 @@ export default function ExperiencePage() {
       {/* ── Header ── */}
       <Box sx={{ mb: 5 }}>
         <Typography sx={{ fontFamily: 'inherit', fontWeight: 700, fontSize: { xs: 22, sm: 30 }, color: COLORS.textPrimary, mb: 0.5 }}>
-          <span style={{ color: COLORS.pink }}>#</span> Work History
+          Work History
         </Typography>
-        <Typography sx={{ fontFamily: 'inherit', fontSize: 13, color: COLORS.textMuted, fontStyle: 'italic' }}>
-          {'// 5 years · production systems that shipped'}
-        </Typography>
+       
       </Box>
 
       <ExperienceTimeline exps={exps} />
