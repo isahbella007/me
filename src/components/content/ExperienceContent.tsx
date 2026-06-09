@@ -68,7 +68,7 @@ export default function ExperienceContent({ exp }: { exp: Experience }) {
       {exp.metrics.length > 0 && (
       <Box sx={{ mb: 4 }}>
         <Typography sx={{ fontFamily: 'inherit', fontSize: 13, color: COLORS.pink, mb: 1.5 }}>
-          ## Impact Metrics
+          Impact Metrics
         </Typography>
         <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2 }}>
           {exp.metrics.map((m, i) => (
@@ -116,7 +116,7 @@ export default function ExperienceContent({ exp }: { exp: Experience }) {
       {/* ── Highlights ── */}
       <Box sx={{ mb: 4 }}>
         <Typography sx={{ fontFamily: 'inherit', fontSize: 13, color: COLORS.pink, mb: 2 }}>
-          ## Highlights
+         Highlights
         </Typography>
         <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
           {exp.highlights.map((h, i) => (
@@ -143,7 +143,7 @@ export default function ExperienceContent({ exp }: { exp: Experience }) {
                   mb: 0.75,
                 }}
               >
-                <span style={{ color: COLORS.textMuted }}>{'### '}</span>
+                {/* <span style={{ color: COLORS.textMuted }}>{'### '}</span> */}
                 {h.title}
               </Typography>
               <Typography
