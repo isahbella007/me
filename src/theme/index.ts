@@ -1,97 +1,105 @@
 import { createTheme } from '@mui/material/styles';
 
+// ── Theme-dependent colors use CSS variables (switch with data-theme="dark") ──
+// ── Accent colors stay as hex — they're constant across themes ────────────────
 export const COLORS = {
-  // ── Backgrounds ──────────────────────────────────────────────────────────
-  bg:          '#FDF8FC',   // main editor — barely-pink white
-  sidebar:     '#FDF0F5',   // sidebar — slightly more pink
-  hover:       '#FAE0EE',   // hover state
-  selected:    '#F5CDE2',   // active / selected row
-  border:      '#EDCCD8',   // dividers & outlines
-  tabInactive: '#FAF0F5',   // inactive tab area
-  activityBar: '#F8E4EF',   // leftmost icon strip
-  codeBg:      '#FFF0F8',   // code / JSON blocks
+  bg:             'var(--c-bg)',
+  sidebar:        'var(--c-sidebar)',
+  hover:          'var(--c-hover)',
+  selected:       'var(--c-selected)',
+  border:         'var(--c-border)',
+  tabInactive:    'var(--c-tab-inactive)',
+  activityBar:    'var(--c-activity-bar)',
+  codeBg:         'var(--c-code-bg)',
+  textPrimary:    'var(--c-text-primary)',
+  textSecondary:  'var(--c-text-secondary)',
+  textMuted:      'var(--c-text-muted)',
 
-  // ── Accent pinks ─────────────────────────────────────────────────────────
-  pink:        '#D63384',   // primary action / headings
-  deepPink:    '#B52270',   // hover on pink elements
-  mauve:       '#9B4F7A',   // secondary purple-pink
-  rose:        '#E8799E',   // softer rose
-  blush:       '#F4B0C8',   // lightest tint
-
-  // ── Semantic aliases (keep component code compatible) ─────────────────────
-  neonGreen:   '#D63384',   // metrics highlight  → now rich pink
-  lavender:    '#9B4F7A',   // folder names       → now deep mauve
-  cyan:        '#7A4E9B',   // JSON keys          → now purple-violet
-  orange:      '#C0608A',   // file-type accents  → now deep rose
-  purple:      '#D63384',   // status bar bg      → same as pink
-
-  // ── Text ─────────────────────────────────────────────────────────────────
-  textPrimary:   '#1A0820',  // headings & body — very dark
-  textSecondary: '#8E5070',  // captions, meta
-  textMuted:     '#B07898',  // subtle hints, markdown prefixes
+  pink:       '#D63384',
+  deepPink:   '#B52270',
+  mauve:      '#9B4F7A',
+  rose:       '#E8799E',
+  blush:      '#F4B0C8',
+  neonGreen:  '#D63384',
+  lavender:   '#9B4F7A',
+  cyan:       '#7A4E9B',
+  orange:     '#C0608A',
+  purple:     '#D63384',
 };
 
-const theme = createTheme({
+const sharedComponents = {
+  MuiCssBaseline: {
+    styleOverrides: {
+      'html, body': { height: '100%', margin: 0, padding: 0 },
+      body: {
+        backgroundColor: 'var(--c-bg)',
+        color: 'var(--c-text-primary)',
+      },
+      '*::-webkit-scrollbar':             { width: 6, height: 6 },
+      '*::-webkit-scrollbar-track':       { background: 'var(--c-sidebar)' },
+      '*::-webkit-scrollbar-thumb':       { background: 'var(--c-border)', borderRadius: 3 },
+      '*::-webkit-scrollbar-thumb:hover': { background: COLORS.mauve },
+      'a': { textDecoration: 'none' },
+    },
+  },
+  MuiButton: {
+    styleOverrides: {
+      root: { fontFamily: 'inherit', textTransform: 'none' as const, fontSize: 13, borderRadius: 4 },
+    },
+  },
+  MuiChip: {
+    styleOverrides: {
+      root: { fontFamily: 'inherit', fontSize: 11 },
+    },
+  },
+  MuiTooltip: {
+    styleOverrides: {
+      tooltip: {
+        fontFamily: 'inherit',
+        fontSize: 11,
+        backgroundColor: COLORS.mauve,
+        color: '#fff',
+      },
+    },
+  },
+  MuiDrawer: {
+    styleOverrides: {
+      paper: { backgroundColor: 'var(--c-sidebar)' },
+    },
+  },
+};
+
+const sharedTypography = {
+  fontFamily: 'var(--font-mono), "JetBrains Mono", "Fira Code", "Cascadia Code", monospace',
+  fontSize: 13,
+};
+
+export const lightTheme = createTheme({
   palette: {
     mode: 'light',
-    background: {
-      default: COLORS.bg,
-      paper:   COLORS.sidebar,
-    },
-    primary:   { main: COLORS.pink },
-    secondary: { main: COLORS.mauve },
-    success:   { main: '#2a9d60' },
-    divider:   COLORS.border,
-    text: {
-      primary:   COLORS.textPrimary,
-      secondary: COLORS.textSecondary,
-    },
+    background: { default: '#FDF8FC', paper: '#FDF0F5' },
+    primary:    { main: COLORS.pink },
+    secondary:  { main: COLORS.mauve },
+    success:    { main: '#2a9d60' },
+    divider:    '#EDCCD8',
+    text:       { primary: '#1A0820', secondary: '#8E5070' },
   },
-  typography: {
-    fontFamily: 'var(--font-mono), "JetBrains Mono", "Fira Code", "Cascadia Code", monospace',
-    fontSize: 13,
-  },
-  components: {
-    MuiCssBaseline: {
-      styleOverrides: {
-        'html, body': { height: '100%', margin: 0, padding: 0 },
-        body: {
-          backgroundColor: COLORS.bg,
-          color: COLORS.textPrimary,
-        },
-        '*::-webkit-scrollbar':             { width: 6, height: 6 },
-        '*::-webkit-scrollbar-track':       { background: COLORS.sidebar },
-        '*::-webkit-scrollbar-thumb':       { background: COLORS.border, borderRadius: 3 },
-        '*::-webkit-scrollbar-thumb:hover': { background: COLORS.mauve },
-        'a': { textDecoration: 'none' },
-      },
-    },
-    MuiButton: {
-      styleOverrides: {
-        root: { fontFamily: 'inherit', textTransform: 'none', fontSize: 13, borderRadius: 4 },
-      },
-    },
-    MuiChip: {
-      styleOverrides: {
-        root: { fontFamily: 'inherit', fontSize: 11 },
-      },
-    },
-    MuiTooltip: {
-      styleOverrides: {
-        tooltip: {
-          fontFamily: 'inherit',
-          fontSize: 11,
-          backgroundColor: COLORS.mauve,
-          color: '#fff',
-        },
-      },
-    },
-    MuiDrawer: {
-      styleOverrides: {
-        paper: { backgroundColor: COLORS.sidebar },
-      },
-    },
-  },
+  typography: sharedTypography,
+  components: sharedComponents,
 });
 
-export default theme;
+export const darkTheme = createTheme({
+  palette: {
+    mode: 'dark',
+    background: { default: '#0C0513', paper: '#160B1E' },
+    primary:    { main: COLORS.pink },
+    secondary:  { main: COLORS.mauve },
+    success:    { main: '#2a9d60' },
+    divider:    '#4A1F5E',
+    text:       { primary: '#F0DDF5', secondary: '#C490B8' },
+  },
+  typography: sharedTypography,
+  components: sharedComponents,
+});
+
+export default lightTheme;

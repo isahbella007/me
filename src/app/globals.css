@@ -12,3 +12,33 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
+/* ── Light theme (default) ─────────────────────────────────────────────────── */
+:root {
+  --c-bg:             #FDF8FC;
+  --c-sidebar:        #FDF0F5;
+  --c-hover:          #FAE0EE;
+  --c-selected:       #F5CDE2;
+  --c-border:         #EDCCD8;
+  --c-tab-inactive:   #FAF0F5;
+  --c-activity-bar:   #F8E4EF;
+  --c-code-bg:        #FFF0F8;
+  --c-text-primary:   #1A0820;
+  --c-text-secondary: #8E5070;
+  --c-text-muted:     #B07898;
+}
+
+/* ── Dark cyber-pink theme ──────────────────────────────────────────────────── */
+[data-theme="dark"] {
+  --c-bg:             #0C0513;
+  --c-sidebar:        #160B1E;
+  --c-hover:          #251334;
+  --c-selected:       #321A45;
+  --c-border:         #4A1F5E;
+  --c-tab-inactive:   #130A1A;
+  --c-activity-bar:   #0F0716;
+  --c-code-bg:        #100418;
+  --c-text-primary:   #F0DDF5;
+  --c-text-secondary: #C490B8;
+  --c-text-muted:     #8B6090;
+}

@@ -25,13 +25,13 @@ export default function InterestsContent() {
         <Typography
           sx={{ fontFamily: 'inherit', fontSize: { xs: 20, sm: 26 }, fontWeight: 700, color: COLORS.textPrimary, mb: 0.5 }}
         >
-          <span style={{ color: COLORS.mauve }}>{'{'}</span>
-          <span style={{ color: COLORS.textPrimary }}>&nbsp;interests.json&nbsp;</span>
-          <span style={{ color: COLORS.mauve }}>{'}'}</span>
+
+          <span style={{ color: COLORS.textPrimary }}>&nbsp;The Human behind the Pipelines&nbsp;</span>
+
         </Typography>
-        <Typography sx={{ fontFamily: 'inherit', fontSize: 13, color: COLORS.textMuted, fontStyle: 'italic' }}>
+        {/* <Typography sx={{ fontFamily: 'inherit', fontSize: 13, color: COLORS.textMuted, fontStyle: 'italic' }}>
           {'// the human behind the pipelines'}
-        </Typography>
+        </Typography> */}
       </Box>
 
       {/* ── Quick profile strip ── */}
@@ -58,7 +58,7 @@ export default function InterestsContent() {
               textAlign: 'center',
             }}
           >
-            <Typography sx={{ fontSize: 20, mb: 0.5 }}>{item.emoji}</Typography>
+            <Typography sx={{ fontSize: 36, mb: 0.75, lineHeight: 1 }}>{item.emoji}</Typography>
             <Typography sx={{ fontFamily: 'inherit', fontSize: 10, color: COLORS.textMuted, mb: 0.25, textTransform: 'uppercase', letterSpacing: 0.5 }}>
               {item.label}
             </Typography>
@@ -142,16 +142,45 @@ export default function InterestsContent() {
 
       {/* ── Fun facts ── */}
       <Box sx={{ mb: 3 }}>
-        <Typography sx={{ fontFamily: 'inherit', fontSize: 13, color: COLORS.pink, mb: 1.25 }}>
+        <Typography sx={{ fontFamily: 'inherit', fontSize: 13, color: COLORS.pink, mb: 1.5 }}>
           Fun Facts
         </Typography>
-        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 0.75 }}>
+        <Box
+          sx={{
+            display: 'grid',
+            gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' },
+            gap: 1.25,
+          }}
+        >
           {funFacts.map((fact, i) => (
-            <Box key={i} sx={{ display: 'flex', alignItems: 'flex-start', gap: 1.25 }}>
-              <Typography sx={{ fontFamily: 'inherit', fontSize: 13, color: COLORS.mauve, flexShrink: 0, lineHeight: 1.7, fontWeight: 700 }}>
-                {String(i + 1).padStart(2, '0')}.
+            <Box
+              key={i}
+              sx={{
+                bgcolor: i % 2 === 0 ? `${COLORS.pink}0A` : `${COLORS.mauve}0A`,
+                border: `1px solid ${i % 2 === 0 ? `${COLORS.pink}28` : `${COLORS.mauve}28`}`,
+                borderLeft: `3px solid ${i % 2 === 0 ? COLORS.pink : COLORS.mauve}`,
+                borderRadius: 1.5,
+                px: 2,
+                py: 1.5,
+                display: 'flex',
+                alignItems: 'flex-start',
+                gap: 1.25,
+              }}
+            >
+              <Typography
+                sx={{
+                  fontFamily: 'inherit',
+                  fontSize: 11,
+                  color: i % 2 === 0 ? COLORS.pink : COLORS.mauve,
+                  flexShrink: 0,
+                  lineHeight: 1.9,
+                  fontWeight: 700,
+                  opacity: 0.7,
+                }}
+              >
+                {String(i + 1).padStart(2, '0')}
               </Typography>
-              <Typography sx={{ fontFamily: 'inherit', fontSize: 13, color: COLORS.textPrimary, lineHeight: 1.7 }}>
+              <Typography sx={{ fontFamily: 'inherit', fontSize: 13, color: COLORS.textPrimary, lineHeight: 1.8 }}>
                 {fact}
               </Typography>
             </Box>

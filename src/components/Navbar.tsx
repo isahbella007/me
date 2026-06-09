@@ -6,14 +6,18 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import Drawer from '@mui/material/Drawer';
+import Tooltip from '@mui/material/Tooltip';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
+import DarkModeIcon from '@mui/icons-material/DarkMode';
+import LightModeIcon from '@mui/icons-material/LightMode';
 import { COLORS } from '@/theme';
+import { useColorMode } from './ColorModeContext';
 
 const NAV_LINKS = [
   { label: 'Experience', href: '/experience' },
   { label: 'Projects',   href: '/projects' },
-  { label: 'Off Duty',   href: '/off-duty/interests' },
+  { label: 'Off Duty',   href: '/off-duty' },
   { label: 'Contact',    href: 'mailto:dagpersonal8@gmail.com', external: true },
 ];
 
@@ -40,6 +44,7 @@ const linkBase = {
 export default function Navbar() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const { isDark, toggle } = useColorMode();
 
   return (
     <>
@@ -110,10 +115,25 @@ export default function Navbar() {
           })}
         </Box>
 
+        {/* Theme toggle — always visible */}
+        <Tooltip title={isDark ? 'Switch to light mode' : 'Switch to dark mode'}>
+          <IconButton
+            onClick={toggle}
+            size="small"
+            sx={{
+              color: isDark ? COLORS.blush : COLORS.textSecondary,
+              ml: 0.5,
+              '&:hover': { color: COLORS.pink, bgcolor: `${COLORS.pink}10` },
+            }}
+          >
+            {isDark ? <LightModeIcon fontSize="small" /> : <DarkModeIcon fontSize="small" />}
+          </IconButton>
+        </Tooltip>
+
         {/* Mobile hamburger */}
         <IconButton
           onClick={() => setOpen(true)}
-          sx={{ display: { xs: 'flex', md: 'none' }, color: COLORS.textSecondary }}
+          sx={{ display: { xs: 'flex', md: 'none' }, color: COLORS.textSecondary, ml: 0.25 }}
           size="small"
         >
           <MenuIcon />

@@ -1,13 +1,23 @@
 'use client';
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
-import theme from '@/theme';
+import { ColorModeProvider, useColorMode } from './ColorModeContext';
+import { lightTheme, darkTheme } from '@/theme';
 
-export default function ThemeRegistry({ children }: { children: React.ReactNode }) {
+function ThemedContent({ children }: { children: React.ReactNode }) {
+  const { isDark } = useColorMode();
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
       <CssBaseline />
       {children}
     </ThemeProvider>
+  );
+}
+
+export default function ThemeRegistry({ children }: { children: React.ReactNode }) {
+  return (
+    <ColorModeProvider>
+      <ThemedContent>{children}</ThemedContent>
+    </ColorModeProvider>
   );
 }
