@@ -24,7 +24,7 @@ export default function ExperienceContent({ exp }: { exp: Experience }) {
                   lineHeight: 1.2,
                 }}
               >
-                <span style={{ color: COLORS.pink }}>#</span> {exp.company}
+                {exp.company}
               </Typography>
               {exp.contract && (
                 <Chip
@@ -143,7 +143,7 @@ export default function ExperienceContent({ exp }: { exp: Experience }) {
                   mb: 0.75,
                 }}
               >
-                {/* <span style={{ color: COLORS.textMuted }}>{'### '}</span> */}
+               
                 {h.title}
               </Typography>
               <Typography
@@ -182,7 +182,7 @@ export default function ExperienceContent({ exp }: { exp: Experience }) {
       {/* ── Tech stack ── */}
       <Box>
         <Typography sx={{ fontFamily: 'inherit', fontSize: 13, color: COLORS.pink, mb: 1.5 }}>
-          ## Tech Stack
+          Tech Stack
         </Typography>
         <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
           {exp.tech.map(t => (

@@ -194,7 +194,7 @@ export default function HRDataApocalypse() {
             mb: 1.5,
           }}
         >
-          <span style={{ color: COLORS.pink }}>#</span> How I Saved My Company from an HR-Induced Data Apocalypse
+          How I Saved My Company from an HR-Induced Data Apocalypse
           <span style={{ color: COLORS.textMuted }}> (and Built a Slick Intranet in the Process)</span>
         </Typography>
 

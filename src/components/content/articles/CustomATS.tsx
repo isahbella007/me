@@ -123,7 +123,7 @@ export default function CustomATS() {
           ))}
         </Box>
         <Typography sx={{ fontFamily: 'inherit', fontWeight: 700, fontSize: { xs: 20, sm: 26 }, color: COLORS.textPrimary, lineHeight: 1.3, mb: 1.5 }}>
-          <span style={{ color: COLORS.pink }}>#</span> Custom Enterprise ATS & Onboarding Engine
+          Custom Enterprise ATS & Onboarding Engine
           <span style={{ color: COLORS.textMuted }}> — Architectural Case Study</span>
         </Typography>
         <Typography sx={{ fontFamily: 'inherit', fontSize: 14, color: COLORS.textSecondary, pl: 2, borderLeft: `3px solid ${COLORS.pink}`, fontStyle: 'italic', lineHeight: 1.7 }}>
@@ -171,7 +171,7 @@ export default function CustomATS() {
       <Divider sx={{ borderColor: COLORS.border, mb: 4 }} />
 
       {/* ── Section 1 ── */}
-      <H2>1. Resume Parsing Pipeline (Edge-Assisted Architecture)</H2>
+      <H2>1. Resume Parsing Pipeline</H2>
 
       <Callout emoji="⚡" title="The Challenge">
         We needed to automate CV parsing without incurring the high subscription costs of enterprise
@@ -234,7 +234,7 @@ export default function CustomATS() {
         <code style={{ color: COLORS.pink, fontSize: 12 }}>Pending_Approval</code>, the underlying
         salary parameters are locked at the database level. A rejection transitions the record to{' '}
         <code style={{ color: COLORS.pink, fontSize: 12 }}>Cancelled</code> — forcing a completely
-        new transaction record rather than mutating the rejected data.
+        new transaction record.
       </ArchNote>
 
       <Divider sx={{ borderColor: COLORS.border, my: 4 }} />

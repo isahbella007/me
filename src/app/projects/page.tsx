@@ -81,9 +81,9 @@ export default function ProjectsPage() {
               <Typography sx={{ fontFamily: 'inherit', fontSize: 15, fontWeight: 700, color: COLORS.textPrimary, lineHeight: 1.3, mb: 0.25 }}>
                 {project.title}
               </Typography>
-              <Typography sx={{ fontFamily: 'inherit', fontSize: 12, color: COLORS.mauve, mb: 0.5 }}>
+              {/* <Typography sx={{ fontFamily: 'inherit', fontSize: 12, color: COLORS.mauve, mb: 0.5 }}>
                 {project.subtitle}
-              </Typography>
+              </Typography> */}
               {/* <Typography sx={{ fontFamily: 'inherit', fontSize: 11, color: COLORS.textMuted, mb: 1.5 }}>
                 @ {project.company}
               </Typography> */}
