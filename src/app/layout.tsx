@@ -11,7 +11,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Isabella Kpai — Data Engineer & Systems Architect',
+  title: 'Isabella Kpai | Data Engineer & Systems Architect',
   description:
     'Portfolio of Isabella Kpai, Data Engineer building pipelines and systems that save companies real money.',
 };
