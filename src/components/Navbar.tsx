@@ -19,7 +19,7 @@ const NAV_LINKS = [
   { label: 'Projects',   href: '/projects' },
   { label: 'Workshops',  href: '/workshops' },
   { label: 'Off Duty',   href: '/off-duty' },
-  { label: 'Contact',    href: 'mailto:dagpersonal8@gmail.com', external: true },
+  { label: 'Contact',    href: 'mailto:isabellakpai@gmail.com', external: true },
 ];
 
 function isActive(href: string, pathname: string) {
